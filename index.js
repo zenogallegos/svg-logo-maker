@@ -3,8 +3,8 @@ const fs = require('fs');
 const buildLogo = require('./utils/buildLogo.js');
 const shapeChoice = require('./utils/shapeChoice.js');
 
-function writeToFile(file, data) {
-    fs.writeFile(file, data, error => {
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, error => {
         if (error) {
             return console.log(error);
         }
@@ -13,7 +13,7 @@ function writeToFile(file, data) {
 }
 
 function init() {
-    inquirer.createPromptModule(buildLogo)
+    inquirer.prompt(buildLogo)
     .then(function(response) {
         writeToFile("logo.svg", shapeChoice(response));
     })

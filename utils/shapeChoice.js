@@ -1,6 +1,6 @@
 const Circle = require('./circle.js');
 const Square = require('./square.js');
-const Square = require('./triangle.js');
+const Triangle = require('./triangle.js');
 
 function specifyShape () {
     if (Response.shape === "circle") {
@@ -12,7 +12,7 @@ function specifyShape () {
         return createShape.render()
     }
     if (Response.shape === "triange") {
-        let createShape = new triange(response.textinput, response.textColor, response.shapeColor);
+        let createShape = new Triangle(response.textinput, response.textColor, response.shapeColor);
         return createShape.render()
     }
 }
