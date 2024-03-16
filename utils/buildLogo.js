@@ -5,12 +5,20 @@ const buildLogo = [
         type: "list",
         name: "shape",
         message: "Select either a circle, square, or triangle to represent your logo:",
-        choices: ["Circle", "Triangle", "Square"]
+        choices: ["circle", "triangle", "square"]
     },
     {
         type: "input",
         name: "shapeColor",
         message: "Enter a valid CSS color for your shape:",
+        validate: function (answer) {
+            let answerLowercase = answer.toLowerCase();
+            for (var i = 0, len = colorList.length; i < len; ++i) {
+                if (answerLowercase.indexOf(colorList[i]) != -1) {
+                return true;
+            }}
+            return console.log("\n Please enter a valid color keyword")
+        }
     },
     {
         type: "input",
@@ -19,9 +27,17 @@ const buildLogo = [
     },
     {
         type: "input",
-        name: "textInput",
-        message: "Enter a valid CSS color for your logo text:"
-    },
+        name: "textColor",
+        message: "Enter a valid CSS color for your logo text:",
+        validate: function (answer) {
+            let answerLowercase = answer.toLowerCase();
+            for (var i = 0, len = colorList.length; i < len; ++i) {
+                if (answerLowercase.indexOf(colorList[i]) != -1) {
+                return true;
+            }}
+            return console.log("\n Please enter a valid color keyword")
+        }
+    }
 ];
 
 module.exports = buildLogo;

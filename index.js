@@ -4,9 +4,9 @@ const buildLogo = require('./utils/buildLogo.js');
 const shapeChoice = require('./utils/shapeChoice.js');
 
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, error => {
-        if (error) {
-            return console.log(error);
+    fs.writeFile(fileName, data, err => {
+        if (err) {
+            return console.log(err);
         }
         console.log("Generating your logo...");
     });
@@ -14,9 +14,9 @@ function writeToFile(fileName, data) {
 
 function init() {
     inquirer.prompt(buildLogo)
-    .then(function(response) {
-        writeToFile("logo.svg", shapeChoice(response));
-    })
+    .then(function(res) {
+        writeToFile("logo.svg", shapeChoice(res));
+    });
 }
 
 init();
